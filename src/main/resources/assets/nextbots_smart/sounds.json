@@ -1,0 +1,34 @@
+{
+  "ambientspooky": {
+    "sounds": [
+      {
+        "name": "nextbots_smart:spooky-ambience-212885",
+        "stream": false
+      }
+    ]
+  },
+  "jumpscare": {
+    "sounds": [
+      {
+        "name": "nextbots_smart:commonnextbot_jumpscareaudio.mp3.mpeg",
+        "stream": false
+      }
+    ]
+  },
+  "chasing": {
+    "sounds": [
+      {
+        "name": "nextbots_smart:pinheadaudio.mp3.ogg.mpeg",
+        "stream": false
+      },
+      {
+        "name": "nextbots_smart:commonnextbot_jumpscareaudio.mp3.mpeg",
+        "stream": false
+      },
+      {
+        "name": "nextbots_smart:spooky-ambience-212885",
+        "stream": false
+      }
+    ]
+  }
+}
