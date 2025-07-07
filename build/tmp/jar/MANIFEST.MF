@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: NextBot's Smart
+Specification-Vendor: NextBots Smart Team
+Specification-Version: 1
+Implementation-Title: nextbots_smart
+Implementation-Version: 1.0.2
+Implementation-Vendor: NextBots Smart Team
+Implementation-Timestamp: 2025-07-07T01:17:28+0000
+

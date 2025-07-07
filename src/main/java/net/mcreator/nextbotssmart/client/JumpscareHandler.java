@@ -20,7 +20,7 @@
 package net.mcreator.nextbotssmart.client;
 
 import net.mcreator.nextbotssmart.NextbotsSmartMod;
-import net.mcreator.nextbotssmart.entity.PinHeadEntity;
+import net.mcreator.nextbotssmart.entity.PinHeadEntitySimplified;
 import net.mcreator.nextbotssmart.init.NextbotsSmartModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
@@ -48,8 +48,8 @@ public class JumpscareHandler {
         isJumpscareActive = true;
         jumpscareTimer = 60;
         jumpscareTexture = texturePath;
-        if (Minecraft.m_91087_().f_91074_ != null) {
-            Minecraft.m_91087_().m_91106_().m_120367_((SoundInstance)new SimpleSoundInstance(((SoundEvent)NextbotsSmartModSounds.JUMPSCARE.get()).m_11660_(), SoundSource.HOSTILE, 2.0f, 1.0f, RandomSource.m_216327_(), false, 0, SoundInstance.Attenuation.NONE, 0.0, 0.0, 0.0, true));
+        if (Minecraft.getInstance().player != null) {
+            Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(NextbotsSmartModSounds.JUMPSCARE.get().getLocation(), SoundSource.HOSTILE, 2.0f, 1.0f, RandomSource.create(), false, 0, SoundInstance.Attenuation.NONE, 0.0, 0.0, 0.0, true));
             NextbotsSmartMod.LOGGER.info("Playing jumpscare sound on client");
         }
     }
@@ -75,13 +75,13 @@ public class JumpscareHandler {
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
         Player player;
-        if (Minecraft.m_91087_().f_91073_ == null) {
+        if (Minecraft.getInstance().level == null) {
             return;
         }
-        if (event.getEntity() instanceof Player && event.getEntity().m_9236_().f_46443_ && (player = (Player)event.getEntity()) == Minecraft.m_91087_().f_91074_) {
-            Entity killer = event.getSource().m_7639_();
+        if (event.getEntity() instanceof Player && event.getEntity().level().isClientSide && (player = (Player)event.getEntity()) == Minecraft.getInstance().player) {
+            Entity killer = event.getSource().getEntity();
             NextbotsSmartMod.LOGGER.info("Player died. Killer entity: " + (killer != null ? killer.getClass().getName() : "null"));
-            if (killer instanceof PinHeadEntity) {
+            if (killer instanceof PinHeadEntitySimplified) {
                 JumpscareHandler.activateJumpscare("nextbots_smart:textures/entities/pinhead.png");
                 NextbotsSmartMod.LOGGER.info("Activating Pin Head jumpscare!");
             }
@@ -90,7 +90,7 @@ public class JumpscareHandler {
 
     public static void clientTick() {
         JumpscareHandler.updateJumpscare();
-        if (Minecraft.m_91087_().f_91074_ == null || Minecraft.m_91087_().f_91073_ == null || Minecraft.m_91087_().f_91073_.m_46467_() % 100L == 0L) {
+        if (Minecraft.getInstance().player == null || Minecraft.getInstance().level == null || Minecraft.getInstance().level.getGameTime() % 100L == 0L) {
             // empty if block
         }
     }

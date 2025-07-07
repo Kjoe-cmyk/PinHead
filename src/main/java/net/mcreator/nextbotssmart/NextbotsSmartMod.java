@@ -88,7 +88,7 @@ public class NextbotsSmartMod {
                     actions.add(work);
                 }
             });
-            actions.forEach(e -> ((Runnable)e.getKey()).run());
+            actions.forEach(e -> ((AbstractMap.SimpleEntry<Runnable, Integer>)e).getKey().run());
             workQueue.removeAll(actions);
         }
     }

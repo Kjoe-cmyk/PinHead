@@ -18,7 +18,7 @@
  */
 package net.mcreator.nextbotssmart.init;
 
-import net.mcreator.nextbotssmart.entity.PinHeadEntity;
+import net.mcreator.nextbotssmart.entity.PinHeadEntitySimplified;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -34,20 +34,20 @@ import net.minecraftforge.registries.RegistryObject;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class NextbotsSmartModEntities {
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create((IForgeRegistry)ForgeRegistries.ENTITY_TYPES, (String)"nextbots_smart");
-    public static final RegistryObject<EntityType<PinHeadEntity>> PIN_HEAD = NextbotsSmartModEntities.register("pin_head", EntityType.Builder.m_20704_(PinHeadEntity::new, (MobCategory)MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(PinHeadEntity::new).m_20699_(0.6f, 1.8f));
+    public static final RegistryObject<EntityType<PinHeadEntitySimplified>> PIN_HEAD = NextbotsSmartModEntities.register("pin_head", EntityType.Builder.of(PinHeadEntitySimplified::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).sized(0.6f, 1.8f));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
-        return REGISTRY.register(registryname, () -> entityTypeBuilder.m_20712_(registryname));
+        return REGISTRY.register(registryname, () -> entityTypeBuilder.build(registryname));
     }
 
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> PinHeadEntity.init());
+        // Simplified init - no complex setup needed for now
     }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put((EntityType)PIN_HEAD.get(), PinHeadEntity.createAttributes().m_22265_());
+        event.put(PIN_HEAD.get(), PinHeadEntitySimplified.createAttributes().build());
     }
 }
 

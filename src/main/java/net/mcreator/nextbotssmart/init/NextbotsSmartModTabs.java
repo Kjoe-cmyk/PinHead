@@ -28,12 +28,12 @@ import net.minecraftforge.registries.DeferredRegister;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class NextbotsSmartModTabs {
-    public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create((ResourceKey)Registries.f_279569_, (String)"nextbots_smart");
+    public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, "nextbots_smart");
 
     @SubscribeEvent
     public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
-        if (tabData.getTabKey() == CreativeModeTabs.f_256731_) {
-            tabData.m_246326_((ItemLike)NextbotsSmartModItems.PIN_HEAD_SPAWN_EGG.get());
+        if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            tabData.accept(NextbotsSmartModItems.PIN_HEAD_SPAWN_EGG.get());
         }
     }
 }

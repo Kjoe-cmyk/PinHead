@@ -31,7 +31,7 @@ public class JumpscareMessage {
     public void handler(Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> DistExecutor.unsafeRunWhenOn((Dist)Dist.CLIENT, () -> () -> {
-            if (Minecraft.m_91087_().f_91074_ != null) {
+            if (Minecraft.getInstance().player != null) {
                 JumpscareHandler.activateJumpscare("nextbots_smart:textures/entities/pinhead.png");
             }
         }));
