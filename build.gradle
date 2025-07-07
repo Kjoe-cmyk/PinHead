@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '1.0.2'
+version = '2.0.0-beta'
 group = 'net.nextbotssmart'
 archivesBaseName = 'nextbots_smart'
 

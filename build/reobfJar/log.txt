@@ -1,5 +1,5 @@
 Java Launcher: /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-Arguments: '--in-jar, /mnt/persist/workspace/build/libs/nextbots_smart-1.0.2.jar, --out-jar, /mnt/persist/workspace/build/reobfJar/output.jar, --srg-in, /mnt/persist/workspace/build/createMcpToSrg/output.tsrg, --live'
+Arguments: '--in-jar, /mnt/persist/workspace/build/libs/nextbots_smart-2.0.0-beta.jar, --out-jar, /mnt/persist/workspace/build/reobfJar/output.jar, --srg-in, /mnt/persist/workspace/build/createMcpToSrg/output.tsrg, --live'
 Classpath:
  - /home/augment-agent/.gradle/caches/forge_gradle/maven_downloader/net/md-5/SpecialSource/1.11.0/SpecialSource-1.11.0-shaded.jar
  - /home/augment-agent/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar
